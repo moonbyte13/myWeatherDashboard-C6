@@ -86,6 +86,7 @@ function getData(){
     data.date = new Date(weather.dt * 1000).toLocaleString()
     // console.log(new Date(weather.dt * 1000).toLocaleString())
     data.city = weather.name;
+    storeCityHistory();
     showCurrentWeather(data);
   });
 }
@@ -137,7 +138,7 @@ function dataForecast(forecast){
 }
 
 function showForecast(){
-
+  $('#currentForecast').empty();
   for(let i = 0; i < 5; i ++){
     let iconLink = `http://openweathermap.org/img/wn/${forecast[i].icon}@2x.png`
     // another template literal
@@ -157,6 +158,26 @@ function showForecast(){
   }
 }
 
+function storeCityHistory(){
+  let cityText = data.city
+  
+  let cityArr = JSON.parse(localStorage.getItem('cityData')) || [];
+  cityArr.push(cityText) 
+  localStorage.setItem('cityData', JSON.stringify(cityArr))
+  displayCityHistory()
+}
+
+function displayCityHistory(){
+  $('#cityList').empty();
+  let cityArr = JSON.parse(localStorage.getItem('cityData')) || [];
+  for(let i=0; i<cityArr.length; i++){
+    let listHTML = `
+    <li>${cityArr[i]}</li>`
+  $('#cityList').append(listHTML)
+  }
+  
+}
+
 // Create a function to retrieve weather data from API
 function getCityData(citySearch) {
   // Create a new XMLHttpRequest object
@@ -166,11 +187,16 @@ function getCityData(citySearch) {
   .then(response => response.json())
   .then(data => {
     // console.log(data);
-    let coordinates = data.list[0].coord;
-    // console.log(coordinates.lon);
-    cityLat = coordinates.lat;
-    cityLon = coordinates.lon;
-    getData();
+    if(data.list[0] !== undefined){
+      let coordinates = data.list[0].coord;
+      // console.log(coordinates.lon);
+      cityLat = coordinates.lat;
+      cityLon = coordinates.lon;
+      getData();
+    }else{
+      alert('Error no city found, please try again.')
+    }
+    
   });
 } 
 
