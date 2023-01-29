@@ -3,7 +3,9 @@ citySearch,
 currentFetch,
 forecastFetch,
 cityLat,
-cityLon;
+cityLon,
+listElm,
+cityArr;
 
 let data = {
   city: 'A city',
@@ -86,7 +88,8 @@ function getData(){
     data.date = new Date(weather.dt * 1000).toLocaleString()
     // console.log(new Date(weather.dt * 1000).toLocaleString())
     data.city = weather.name;
-    storeCityHistory();
+    // console.log(data.city)
+    storeCityHistory(data.city);
     showCurrentWeather(data);
   });
 }
@@ -117,7 +120,7 @@ function dataForecast(forecast){
   })
   .then(response => response.json())
   .then(weatherForecast => {
-    console.log(weatherForecast)
+    // console.log(weatherForecast)
     let dayH = 5
     for(let i=0; i<5; i++){
       // console.log(dayH)
@@ -158,10 +161,18 @@ function showForecast(){
   }
 }
 
-function storeCityHistory(){
-  let cityText = data.city
+function storeCityHistory(dataCity){
+  let cityText = dataCity
   
-  let cityArr = JSON.parse(localStorage.getItem('cityData')) || [];
+  cityArr = JSON.parse(localStorage.getItem('cityData')) || [];
+  // console.log(cityText)
+  for(let i=0; i<cityArr.length; i++){
+    if(cityArr[i] == cityText){
+      // console.log(cityArr[i])
+      cityArr.splice(i,1)
+      //console.log('err, i=i')
+    }
+  }
   cityArr.unshift(cityText) 
   localStorage.setItem('cityData', JSON.stringify(cityArr))
   displayCityHistory()
@@ -169,17 +180,23 @@ function storeCityHistory(){
 
 function displayCityHistory(){
   $('#cityList').empty();
-  let cityArr = JSON.parse(localStorage.getItem('cityData')) || [];
+  cityArr = JSON.parse(localStorage.getItem('cityData')) || [];
   for(let i=0; i<cityArr.length; i++){
     let listHTML = `
-    <li>${cityArr[i]}</li>`
+    <li class='listEl'>${cityArr[i]}</li>`
   $('#cityList').append(listHTML)
   }
-  
+  listElm = $('.listEl')
+  $(listElm).click(function() {
+    cityName = $(this).text();
+    // console.log($(this).text())
+    citySearch = `https://api.openweathermap.org/data/2.5/find?q=${cityName}&appid=${apiKey}&units=metric`;
+    getCityData();
+  });
 }
 
 // Create a function to retrieve weather data from API
-function getCityData(citySearch) {
+function getCityData() {
   // Create a new XMLHttpRequest object
   fetch(citySearch, {
     method: 'GET',
@@ -203,8 +220,9 @@ function getCityData(citySearch) {
 $('#searchBtn').click(function() {
   cityName = $('#cityName').val();
   citySearch = `https://api.openweathermap.org/data/2.5/find?q=${cityName}&appid=${apiKey}&units=metric`;
-  getCityData(citySearch);
+  getCityData();
 });
 
+displayCityHistory()
 // weather api fetch
 // https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
