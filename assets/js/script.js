@@ -162,7 +162,7 @@ function storeCityHistory(){
   let cityText = data.city
   
   let cityArr = JSON.parse(localStorage.getItem('cityData')) || [];
-  cityArr.push(cityText) 
+  cityArr.unshift(cityText) 
   localStorage.setItem('cityData', JSON.stringify(cityArr))
   displayCityHistory()
 }
