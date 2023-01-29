@@ -69,7 +69,7 @@ let forecast = [
   },
 ]
 
-let apiKey = config.API_KEY
+let apiKey = config.API_KEY /* || $${{ vars.API_KEY }} */
 
 function getData(){
   currentFetch = `https://api.openweathermap.org/data/2.5/weather?lat=${cityLat}&lon=${cityLon}&appid=${apiKey}&units=metric`
@@ -146,7 +146,7 @@ function showForecast(){
     let iconLink = `http://openweathermap.org/img/wn/${forecast[i].icon}@2x.png`
     // another template literal
     let forecastHTML = `
-    <div id='day-${forecast[i].day}' class="card" style="width: 20%;">
+    <div id='day-${forecast[i].day}' class="card forecast" style="width: 20%;">
       <div class="card-header">${forecast[i].date} <img src='${iconLink}'></img></div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Temp: ${forecast[i].temp} °C</li>
@@ -183,7 +183,7 @@ function displayCityHistory(){
   cityArr = JSON.parse(localStorage.getItem('cityData')) || [];
   for(let i=0; i<cityArr.length; i++){
     let listHTML = `
-    <li class='listEl'>${cityArr[i]}</li>`
+    <li type="button" class='list-group-item list-group-item-action active text-bg-dark p-3 border border-light-subtle listEl'>${cityArr[i]}</li>`
   $('#cityList').append(listHTML)
   }
   listElm = $('.listEl')
