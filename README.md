@@ -37,7 +37,7 @@ THEN I am again presented with current and future conditions for that city
 <img src='./assets/images/deployment.gif'><br>
 
 ## Credits
-Shout-out to my tutor who helped explain the bootstrap box model and for showing me template literals.
+Shout-out to my tutor Dominique Meeks who helped explain the bootstrap box model and for showing me template literals.
 <br>
 
 ## Licence 🔑
