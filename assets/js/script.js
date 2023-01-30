@@ -69,7 +69,7 @@ let forecast = [
   },
 ]
 
-let apiKey = config.API_KEY /* || $${{ vars.API_KEY }} */
+let apiKey = "a27072c44a7ebeacb5fd74e2baf25714"
 
 function getData(){
   currentFetch = `https://api.openweathermap.org/data/2.5/weather?lat=${cityLat}&lon=${cityLon}&appid=${apiKey}&units=metric`
