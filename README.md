@@ -1,7 +1,7 @@
 # 06 Server-Side APIs: Weather Dashboard
 
 ## Description
-This was a fun challenge. I learned alot about bootstrap and how it makes my life alot easier.
+This was a fun challenge. I learned alot about bootstrap and how it makes my life alot easier. I also learned quite a bit about template literals as I implemented them into my code.
 <br>
 
 ## Deployment Link 🔗
