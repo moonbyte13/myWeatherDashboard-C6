@@ -1,10 +1,12 @@
 # 06 Server-Side APIs: Weather Dashboard
 
 ## Description
+This was a fun challenge. I learned alot about bootstrap and how it makes my life alot easier.
 <br>
 
 ## Deployment Link 🔗
-<br>
+[Deployment](https://xmoonphasex.github.io/myWeatherDashboard-C6/)<br>
+[Repo](https://github.com/XMoonphaseX/myWeatherDashboard-C6)<br>
 
 ## User Story 📘
 
@@ -35,7 +37,7 @@ THEN I am again presented with current and future conditions for that city
 <img src='./assets/images/deployment.gif'><br>
 
 ## Credits
-Shout-out to my tutor who helped explain the bootstrap box model.
+Shout-out to my tutor who helped explain the bootstrap box model and for showing me template literals.
 <br>
 
 ## Licence 🔑
