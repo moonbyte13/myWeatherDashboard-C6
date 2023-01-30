@@ -32,9 +32,10 @@ THEN I am again presented with current and future conditions for that city
 <img src='./assets/images/06-server-side-apis-homework-demo.png'><br>
 
 ## Deployment gif
-<img src=''><br>
+<img src='./assets/images/deployment.gif'><br>
 
 ## Credits
+Shout-out to my tutor who helped explain the bootstrap box model.
 <br>
 
 ## Licence 🔑
