@@ -5,8 +5,8 @@ This was a fun challenge. I learned alot about bootstrap and how it makes my lif
 <br>
 
 ## Deployment Link 🔗
-[Deployment](https://xmoonphasex.github.io/myWeatherDashboard-C6/)<br>
-[Repo](https://github.com/XMoonphaseX/myWeatherDashboard-C6)<br>
+[Deployment](https://moonphase13.github.io/myWeatherDashboard-C6/)<br>
+[Repo](https://github.com/moonphase13/myWeatherDashboard-C6)<br>
 
 ## User Story 📘
 
@@ -41,4 +41,4 @@ Shout-out to my tutor Dominique Meeks who helped explain the bootstrap box model
 <br>
 
 ## Licence 🔑
-MIT © XMoonphaseX
+MIT © moonphase13
